@@ -48,6 +48,7 @@ dependencies {
 
     testImplementation(libs.edc.spi.jsonld)
     testImplementation(libs.edc.ext.jsonld)
+    testImplementation(libs.edc.core.transform)
 
     // Identity Hub
     testImplementation(libs.ih.core.client)
