@@ -29,7 +29,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"@context\": {\n      \"edc\": \"https://w3id.org/edc/v0.0.1/ns/\"\n    },\n    \"edc:asset\": {\n        \"@id\": \"test-document_{{participant_id}}\",\n        \"edc:properties\": {\n            \"edc:name\": \"test-document_{{participant_id}}\",\n            \"edc:contenttype\": \"application/json\",\n            \"edc:version\": \"1.1\",\n            \"edc:type\": \"HttpData\"\n        }\n    },\n    \"edc:dataAddress\": {\n        \"edc:type\": \"HttpData\",\n        \"edc:name\": \"test-document_{{participant_id}}\",\n        \"edc:baseUrl\": \"https://filesamples.com/samples/document/txt/sample1.txt\"\n    }\n}",
+							"raw": "{\n    \"@context\": {\n      \"edc\": \"https://w3id.org/edc/v0.0.1/ns/\"\n    },\n    \"edc:asset\": {\n        \"@id\": \"test-document_{{participant_id}}\",\n        \"edc:properties\": {\n            \"edc:name\": \"test-document_{{participant_id}}\",\n            \"edc:contenttype\": \"application/json\",\n            \"edc:version\": \"1.1\",\n            \"edc:type\": \"HttpData\"\n        }\n    },\n    \"edc:dataAddress\": {\n        \"edc:type\": \"HttpData\",\n        \"edc:name\": \"test-document_{{participant_id}}\",\n        \"edc:baseUrl\": \"https://fastly.picsum.photos/id/385/200/200.jpg?hmac=dLlnX_YjZRYLV8lZ45w0UOuKuI1MiXWjEw5DZMnKNbg\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -17,7 +17,10 @@ package org.eclipse.edc.handler;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 
 public class ReceiverHandler implements HttpHandler {
@@ -27,7 +30,21 @@ public class ReceiverHandler implements HttpHandler {
      */
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        System.out.println("Request Body: " + new String(exchange.getRequestBody().readAllBytes()));
-        exchange.sendResponseHeaders(200, 0);
+        //System.out.println("Request Body: " + new String(exchange.getRequestBody().readAllBytes()));
+        try {
+            System.out.println("received transfer request");
+            File file = new File("/app/testimage.jpg");
+            FileOutputStream os = new FileOutputStream(file, false);
+            int read;
+            byte[] bytes = new byte[1024];
+            while ((read = exchange.getRequestBody().read(bytes)) != -1) {
+                os.write(bytes, 0, read);
+            }
+            os.close();
+        } catch (IOException e) {
+            System.out.println(e);
+        } finally {
+            exchange.sendResponseHeaders(200, 0);
+        }
     }
 }
