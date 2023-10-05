@@ -20,6 +20,7 @@ function seedVerifiedCredentials() {
   local participantName="$1"
   local participantDid="$2"
   local region="$3"
+  local is_utility="$4"
 
    for subject in '"region": "'$region'"'
    do
@@ -32,15 +33,28 @@ function seedVerifiedCredentials() {
                  -i="did:web:did-server:gaia-x" \
                  -k="/resources/vault/gaia-x/private-key.pem"
    done
+
+    for subject in '"is_utility": "'$is_utility'"'
+    do
+      echo "Seeding VC for $participantName: $subject"
+      java -jar identity-hub-cli.jar \
+                  -s="http://$participantName:7171/api/identity/identity-hub" \
+                  vc add \
+                  -c="{ $subject }" \
+                  -b="$participantDid" \
+                  -i="did:web:did-server:gaia-x" \
+                  -k="/resources/vault/gaia-x/private-key.pem"
+    done
 }
 
 function seedAndRegisterParticipant() {
   local participantName="$1"
   local region="$2"
+  local is_utility="$3"
   local participantDid="did:web:did-server:$participantName"
 
   # seed vc for participant
-  seedVerifiedCredentials "$participantName" "$participantDid" "$region"
+  seedVerifiedCredentials "$participantName" "$participantDid" "$region" "$is_utility"
 
   # Register dataspace participants
   registerParticipant "$participantName" "$participantDid"
@@ -49,6 +63,7 @@ function seedAndRegisterParticipant() {
 function awaitParticipantRegistration() {
   local participantName="$1"
   local region="$2"
+  local is_utility="$3"
   local participantDid="did:web:did-server:$participantName"
 
   cmd="java -jar registration-service-cli.jar \
@@ -65,7 +80,7 @@ function awaitParticipantRegistration() {
 # Read participants from participants.json file.
 # $participants will contain participants and regions in a shell readable format e.g.:
 # 'company1' 'eu' \n 'company2' 'eu' \n 'company3' 'us'
-participants=$(jq -r '.include | map([.participant, .region])[] | @sh' /common-resources/participants.json)
+participants=$(jq -r '.include | map([.participant, .region, .is_utility])[] | @sh' /common-resources/participants.json)
 
 # Seed VCs and register participants.
 while read -r i; do

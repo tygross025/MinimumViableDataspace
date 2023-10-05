@@ -4,19 +4,22 @@
       "participant": "company1",
       "region": "eu",
       "country": "FR",
-      "data_dashboard_theme": "theme-1"
+      "data_dashboard_theme": "theme-1",
+      "is_utility": "true"
     },
     {
       "participant": "company2",
       "region": "eu",
       "country": "DE",
-      "data_dashboard_theme": "theme-2"
+      "data_dashboard_theme": "theme-2",
+      "is_utility": "false"
     },
     {
       "participant": "company3",
       "region": "us",
       "country": "US",
-      "data_dashboard_theme": "theme-3"
+      "data_dashboard_theme": "theme-3",
+      "is_utility": "false"
     }
   ]
 }

@@ -14,6 +14,7 @@
 
 package org.eclipse.edc.mvd;
 
+import org.eclipse.edc.connector.dataplane.http.spi.HttpRequestParamsProvider;
 import org.eclipse.edc.policy.engine.spi.PolicyEngine;
 import org.eclipse.edc.policy.engine.spi.RuleBindingRegistry;
 import org.eclipse.edc.policy.model.Permission;
@@ -34,6 +35,7 @@ public class SeedPoliciesExtension implements ServiceExtension {
 
     private static final String REGION_LOCATION = "regionLocation";
     private static final String REGION_LOCATION_EVALUATION_KEY = EDC_NAMESPACE + REGION_LOCATION;
+    private static final String UTILITY_EVALUATION_KEY = EDC_NAMESPACE + "is_utility";
 
     @Inject
     private RuleBindingRegistry ruleBindingRegistry;
@@ -46,6 +48,12 @@ public class SeedPoliciesExtension implements ServiceExtension {
 
     @Inject
     private Monitor monitor;
+
+    @Inject
+    private HttpRequestParamsProvider paramsProvider;
+
+    public SeedPoliciesExtension() {
+    }
 
     @Override
     public String name() {
@@ -62,7 +70,11 @@ public class SeedPoliciesExtension implements ServiceExtension {
         ruleBindingRegistry.bind("USE", CATALOGING_SCOPE);
         ruleBindingRegistry.bind(ODRL_SCHEMA + "use", CATALOGING_SCOPE);
         ruleBindingRegistry.bind(REGION_LOCATION_EVALUATION_KEY, CATALOGING_SCOPE);
+        ruleBindingRegistry.bind("USE", CATALOGING_SCOPE);
+        ruleBindingRegistry.bind(ODRL_SCHEMA + "use", CATALOGING_SCOPE);
+        ruleBindingRegistry.bind(UTILITY_EVALUATION_KEY, CATALOGING_SCOPE);
         policyEngine.registerFunction(CATALOGING_SCOPE, Permission.class, REGION_LOCATION_EVALUATION_KEY, new RegionConstraintFunction());
+        policyEngine.registerFunction(CATALOGING_SCOPE, Permission.class, UTILITY_EVALUATION_KEY, new UtilityConstraintFunction());
     }
 
 }
