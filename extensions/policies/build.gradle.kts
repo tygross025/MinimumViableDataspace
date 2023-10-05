@@ -21,6 +21,9 @@ dependencies {
     api(libs.edc.spi.policy.engine)
 //    api(edc.core.connector)
     implementation(libs.ih.spi.core)
+    implementation(libs.edc.ext.transfer.dpf)
+
+    implementation(libs.edc.ext.dpf.http)
 
     testImplementation(libs.edc.core.policy.engine)
 }

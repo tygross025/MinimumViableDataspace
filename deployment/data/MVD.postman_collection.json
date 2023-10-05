@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "dc725ac0-d08c-467f-95bf-88af4073f21f",
+		"_postman_id": "fa9feac0-605f-47f8-92e5-1d94f52f0bd0",
 		"name": "MVD",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "3898078"
+		"_exporter_id": "28133152"
 	},
 	"item": [
 		{
@@ -29,7 +29,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"@context\": {\n      \"edc\": \"https://w3id.org/edc/v0.0.1/ns/\"\n    },\n    \"@type\": \"edc:Asset\",\n    \"@id\": \"test-document_{{participant_id}}\",\n    \"edc:properties\": {\n        \"edc:id\": \"test-document_{{participant_id}}\",\n        \"edc:name\": \"test-document_{{participant_id}}\",\n        \"edc:contenttype\": \"text/plain\",\n        \"edc:version\": \"1.0\",\n        \"edc:type\": \"AzureStorage\"\n    },\n    \"edc:dataAddress\": {\n        \"@type\": \"edc:DataAddress\",\n        \"edc:type\": \"AzureStorage\",\n        \"edc:properties\": [\n            {\n            \"edc:account\": \"{{storage_account}}\",\n            \"edc:container\": \"src-container\",\n            \"edc:blobname\": \"text-document.txt\",\n            \"edc:keyName\": \"{{storage_account}}-key1\"\n            }\n        ]\n    }\n}",
+							"raw": "{\n    \"@context\": {\n      \"edc\": \"https://w3id.org/edc/v0.0.1/ns/\"\n    },\n    \"edc:asset\": {\n        \"@id\": \"test-document_{{participant_id}}\",\n        \"edc:properties\": {\n            \"edc:name\": \"test-document_{{participant_id}}\",\n            \"edc:contenttype\": \"application/json\",\n            \"edc:version\": \"1.1\",\n            \"edc:type\": \"HttpData\"\n        }\n    },\n    \"edc:dataAddress\": {\n        \"edc:type\": \"HttpData\",\n        \"edc:name\": \"test-document_{{participant_id}}\",\n        \"edc:baseUrl\": \"https://fastly.picsum.photos/id/385/200/200.jpg?hmac=dLlnX_YjZRYLV8lZ45w0UOuKuI1MiXWjEw5DZMnKNbg\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -269,7 +269,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"@context\": {\r\n        \"edc\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n    },\r\n    \"id\": \"dpf-instance_{{participant_id}}\",\r\n    \"url\": \"http://{{participant_id}}:8383/api/v1\",\r\n    \"allowedSourceTypes\": [\"AzureStorage\"],\r\n    \"allowedDestTypes\": [\"AzureStorage\"]\r\n}",
+							"raw": "{\r\n    \"@context\": {\r\n        \"edc\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n    },\r\n    \"id\": \"dpf-instance_{{participant_id}}\",\r\n    \"url\": \"http://{{participant_id}}:8383/api/v1\",\r\n    \"allowedSourceTypes\": [\"AzureStorage\", \"HttpData\"],\r\n    \"allowedDestTypes\": [\"AzureStorage\", \"HttpData\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

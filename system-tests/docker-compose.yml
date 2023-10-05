@@ -184,6 +184,17 @@ services:
     volumes:
       - ./resources:/resources
 
+  # Http receiving server for participant company2
+  company2-httpserver:
+    container_name: company2-httpserver
+    build:
+      context: ./provider-push-http-backend-service
+    depends_on:
+      company2:
+        condition: service_healthy
+    ports:
+      - "4000:4000"
+
   # cli-tools to help setup MVD environment e.g. registering participant to authority.
   cli-tools:
     container_name: cli-tools
