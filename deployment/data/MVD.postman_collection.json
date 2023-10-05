@@ -37,12 +37,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{data_management_url}}/v2/assets",
+							"raw": "{{data_management_url}}/v3/assets",
 							"host": [
 								"{{data_management_url}}"
 							],
 							"path": [
-								"v2",
+								"v3",
 								"assets"
 							]
 						}
@@ -69,7 +69,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"@context\": {\n      \"edc\": \"https://w3id.org/edc/v0.0.1/ns/\"\n    },\n    \"edc:asset\": {\n        \"@id\": \"test-document-2_{{participant_id}}\",\n        \"edc:properties\": {\n            \"edc:name\": \"test-document-2_{{participant_id}}\",\n            \"edc:contenttype\": \"text/plain\",\n            \"edc:version\": \"1.0\",\n            \"edc:type\": \"AzureStorage\"\n        }\n    },\n    \"edc:dataAddress\": {\n        \"edc:type\": \"AzureStorage\",\n        \"edc:properties\": {\n            \"edc:account\": \"{{storage_account}}\",\n            \"edc:container\": \"src-container\",\n            \"edc:blobname\": \"text-document-2.txt\",\n            \"edc:keyName\": \"{{storage_account}}-key1\"\n        }\n    }\n}",
+							"raw": "{\n    \"@context\": {\n      \"edc\": \"https://w3id.org/edc/v0.0.1/ns/\"\n    },\n    \"@type\": \"edc:Asset\",\n    \"@id\": \"test-document-2_{{participant_id}}\",        \n    \"edc:properties\": {\n        \"edc:id\": \"test-document-2_{{participant_id}}\",\n        \"edc:name\": \"test-document-2_{{participant_id}}\",\n        \"edc:contenttype\": \"text/plain\",\n        \"edc:version\": \"1.0\",\n        \"edc:type\": \"AzureStorage\"\n    },\n    \"edc:dataAddress\": {\n        \"@type\": \"edc:DataAddress\",\n        \"edc:type\": \"AzureStorage\",\n        \"edc:properties\": [\n            {\n            \"edc:account\": \"{{storage_account}}\",\n            \"edc:container\": \"src-container\",\n            \"edc:blobname\": \"text-document-2.txt\",\n            \"edc:keyName\": \"{{storage_account}}-key1\"\n            }\n        ]\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -77,12 +77,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{data_management_url}}/v2/assets",
+							"raw": "{{data_management_url}}/v3/assets",
 							"host": [
 								"{{data_management_url}}"
 							],
 							"path": [
-								"v2",
+								"v3",
 								"assets"
 							]
 						}
@@ -269,7 +269,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"@context\": {\"edc\": \"https://w3id.org/edc/v0.0.1/ns/\"}, \r\n    \"id\": \"dpf-instance_{{participant_id}}\",\r\n    \"url\": \"http://{{participant_id}}:8383/api/control\",\r\n    \"allowedSourceTypes\": [\"AzureStorage\", \"HttpData\"],\r\n    \"allowedDestTypes\": [\"AzureStorage\", \"HttpData\"]\r\n}",
+							"raw": "{\r\n    \"@context\": {\r\n        \"edc\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n    },\r\n    \"id\": \"dpf-instance_{{participant_id}}\",\r\n    \"url\": \"http://{{participant_id}}:8383/api/v1\",\r\n    \"allowedSourceTypes\": [\"AzureStorage\", \"HttpData\"],\r\n    \"allowedDestTypes\": [\"AzureStorage\", \"HttpData\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -332,10 +332,6 @@
 			"key": "data_management_url",
 			"value": "http://localhost:9191/api/management",
 			"type": "string"
-		},
-		{
-			"key": "api_key",
-			"value": "ApiKeyDefaultValue"
 		}
 	]
 }

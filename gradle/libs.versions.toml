@@ -2,13 +2,13 @@
 format.version = "1.1"
 
 [versions]
-edc = "0.2.0"
+edc = "0.2.1"
 
 assertj = "3.24.2"
 awaitility = "4.2.0"
 okhttp = "4.11.0"
-restAssured = "5.3.1"
-apacheCommons = "3.12.0"
+restAssured = "5.3.2"
+apacheCommons = "3.13.0"
 gatling = "3.9.5"
 
 [libraries]
@@ -24,7 +24,7 @@ edc-core-policy-engine = { module = "org.eclipse.edc:policy-engine", version.ref
 edc-core-micrometer = { module = "org.eclipse.edc:micrometer-core", version.ref = "edc" }
 edc-core-junit = { module = "org.eclipse.edc:junit", version.ref = "edc" }
 edc-core-jersey = { module = "org.eclipse.edc:jersey-core", version.ref = "edc" }
-edc-core-transform = { module = "org.eclipse.edc:transform-core", version.ref = "edc"}
+edc-core-transform-core = { module = "org.eclipse.edc:transform-core", version.ref = "edc" }
 edc-protocol-dsp = { module = "org.eclipse.edc:dsp", version.ref = "edc" }
 #
 edc-ext-jsonld = { module = "org.eclipse.edc:json-ld", version.ref = "edc" }
@@ -79,9 +79,9 @@ edc-azure-ext-provision-blob = { module = "org.eclipse.edc:provision-blob", vers
 
 apache-commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "apacheCommons" }
 gatling-highcharts = { module = "io.gatling.highcharts:gatling-charts-highcharts", version.ref = "gatling" }
-azure-identity = { group = "com.azure", name = "azure-identity", version = "1.9.1" }
-azure-keyvault = { group = "com.azure", name = "azure-security-keyvault-secrets", version = "4.6.3" }
-azure-storageblob = { group = "com.azure", name = "azure-storage-blob", version = "12.22.3" }
+azure-identity = { group = "com.azure", name = "azure-identity", version = "1.10.1" }
+azure-keyvault = { group = "com.azure", name = "azure-security-keyvault-secrets", version = "4.6.5" }
+azure-storageblob = { group = "com.azure", name = "azure-storage-blob", version = "12.23.1" }
 
 [bundles]
 connector = ["edc-core-boot", "edc-core-connector", "edc-core-jersey", "edc-ext-api-observability"]
