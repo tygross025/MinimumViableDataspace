@@ -39,13 +39,8 @@ dependencies {
     runtimeOnly(libs.ih.ext.credentials.jwt)
     runtimeOnly(libs.ih.ext.verifier.jwt)
 
-    // To use FileSystem vault e.g. -DuseFsVault="true".Only for non-production usages.
-    val useFsVault: Boolean = System.getProperty("useFsVault", "false").toBoolean()
-    if (useFsVault) {
-        runtimeOnly(libs.edc.ext.vault.filesystem)
-    } else {
-        runtimeOnly(libs.edc.azure.ext.vault)
-    }
+    // FileSystem vault only for non-production usages.
+    runtimeOnly(libs.edc.ext.vault.filesystem)
 }
 
 application {

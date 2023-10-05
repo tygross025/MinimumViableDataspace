@@ -13,7 +13,6 @@ services:
       EDC_CONNECTOR_NAME: company1
       EDC_PARTICIPANT_ID: did:web:did-server:company1
 
-      EDC_BLOBSTORE_ENDPOINT_TEMPLATE: "http://azurite:10000/%s"
       EDC_IDENTITY_DID_URL: did:web:did-server:company1
       EDC_VAULT: /resources/vault/company1/company1-vault.properties
       EDC_KEYSTORE: /resources/vault/company1/company1-keystore.jks
@@ -30,7 +29,6 @@ services:
       EDC_WEB_REST_CORS_HEADERS: "origin,content-type,accept,authorization,x-api-key"
     depends_on:
       - did-server
-      - azurite
       - registration-service
     ports:
       - "9191:9191"
@@ -52,7 +50,6 @@ services:
       EDC_CONNECTOR_NAME: company2
       EDC_PARTICIPANT_ID: did:web:did-server:company2
 
-      EDC_BLOBSTORE_ENDPOINT_TEMPLATE: "http://azurite:10000/%s"
       EDC_IDENTITY_DID_URL: did:web:did-server:company2
       EDC_VAULT: /resources/vault/company2/company2-vault.properties
       EDC_KEYSTORE: /resources/vault/company2/company2-keystore.jks
@@ -69,7 +66,6 @@ services:
       EDC_WEB_REST_CORS_HEADERS: "origin,content-type,accept,authorization,x-api-key"
     depends_on:
       - did-server
-      - azurite
       - registration-service
     ports:
       - "9192:9191"
@@ -91,7 +87,6 @@ services:
       EDC_CONNECTOR_NAME: company3
       EDC_PARTICIPANT_ID: did:web:did-server:company3
 
-      EDC_BLOBSTORE_ENDPOINT_TEMPLATE: "http://azurite:10000/%s"
       EDC_IDENTITY_DID_URL: did:web:did-server:company3
       EDC_VAULT: /resources/vault/company3/company3-vault.properties
       EDC_KEYSTORE: /resources/vault/company3/company3-keystore.jks
@@ -108,7 +103,6 @@ services:
       EDC_WEB_REST_CORS_HEADERS: "origin,content-type,accept,authorization,x-api-key"
     depends_on:
       - did-server
-      - azurite
       - registration-service
     ports:
       - "9193:9191"
@@ -149,14 +143,6 @@ services:
     ports:
       - "7070:80"
 
-  # Azure blob storage simulator.
-  azurite:
-    container_name: azurite
-    image: mcr.microsoft.com/azure-storage/azurite
-    ports:
-      - 10000:10000
-    environment:
-      AZURITE_ACCOUNTS: company1assets:key1;company2assets:key2;company3assets:key3
 
   # Dataspace registration service authority.
   registration-service:

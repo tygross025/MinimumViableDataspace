@@ -87,7 +87,7 @@ azure-storageblob = { group = "com.azure", name = "azure-storage-blob", version 
 connector = ["edc-core-boot", "edc-core-connector", "edc-core-jersey", "edc-ext-api-observability"]
 identity = ["edc-ext-identity-did-core", "edc-ext-identity-did-service", "edc-ext-identity-did-web"]
 transfer-dpf = ["edc-ext-transfer-dpf", "edc-ext-dpf-client", "edc-ext-dpf-selector-client"]
-dpf = ["edc-ext-dpf-api", "edc-ext-dpf-http", "edc-ext-dpf-core", "edc-azure-ext-dpf-storage"]
+dpf = ["edc-ext-dpf-api", "edc-ext-dpf-http", "edc-ext-dpf-core"]
 
 [plugins]
 shadow = { id = "com.github.johnrengelman.shadow", version = "8.1.1" }

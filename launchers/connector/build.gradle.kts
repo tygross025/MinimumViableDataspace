@@ -41,16 +41,9 @@ dependencies {
     // DID authentication
     runtimeOnly(libs.bundles.identity)
 
-    // Blob storage container provisioning
-    runtimeOnly(libs.edc.azure.core.blob)
-    runtimeOnly(libs.edc.azure.ext.provision.blob)
-    // To use FileSystem vault e.g. -DuseFsVault="true".Only for non-production usages.
-    val useFsVault: Boolean = System.getProperty("useFsVault", "false").toBoolean()
-    if (useFsVault) {
-        runtimeOnly(libs.edc.ext.vault.filesystem)
-    } else {
-        runtimeOnly(libs.edc.azure.ext.vault)
-    }
+
+    // FileSystem vault only for non-production usages.
+    runtimeOnly(libs.edc.ext.vault.filesystem)
 
     runtimeOnly(libs.bundles.transfer.dpf)
 
